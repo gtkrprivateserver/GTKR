@@ -6,25 +6,32 @@
 <title>Growtopia Korea Private Server | How To Play</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <style>
-body {
+html, body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   background: #000;
+  font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
 }
 
+/* Container full screen */
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: auto;
   gap: 30px;
   padding: 40px;
-  justify-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto; /* Bisa scroll vertical kalau terlalu banyak card */
 }
 
 /* Card */
 .card {
   position: relative;
-  width: 300px;
   background: linear-gradient(145deg, #222, #111);
   border: 4px solid gold;
   border-radius: 25px;
@@ -51,7 +58,7 @@ body {
   z-index: -1;
 }
 
-.card:hover {transform: translateY(-10px); box-shadow: 0 25px 50px rgba(255,215,0,0.7),0 0 35px gold;}
+.card:hover {transform: translateY(-10px); box-shadow:0 25px 50px rgba(255,215,0,0.7),0 0 35px gold;}
 
 .btn {
   margin-top: 20px;
@@ -66,23 +73,20 @@ body {
   cursor: pointer;
 }
 
-/* Copy Button */
 .copy-btn {
   background: linear-gradient(45deg, gold, #ffd700);
   color: #111;
   box-shadow: 0 0 10px gold;
 }
-.copy-btn:hover {background: linear-gradient(45deg, #fff700, #ffdd33); transform: scale(1.1); box-shadow:0 0 25px gold,0 0 35px #ffd700;}
+.copy-btn:hover {background: linear-gradient(45deg,#fff700,#ffdd33); transform: scale(1.1); box-shadow:0 0 25px gold,0 0 35px #ffd700;}
 
-/* Download Button */
 .download-btn {
-  background: linear-gradient(45deg, #222, #111);
+  background: linear-gradient(45deg,#222,#111);
   color: gold;
   border: 3px solid gold;
 }
 .download-btn:hover {background: gold; color: #111; transform: scale(1.1); box-shadow:0 0 25px gold,0 0 35px #ffd700;}
 
-/* Particle */
 .particle {
   position: absolute;
   width: 4px;
@@ -136,31 +140,42 @@ body {
 </div>
 
 <!-- 5 Card Download -->
-<!-- 5 Card Download -->
 <div class="card">
-  VHOSTS APP
-  <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" download class="btn download-btn"><i class="fa fa-download"></i> Download</a>
+  IOS
+  <input type="text" value="https://growsoft.cc/ios/9352" id="copyText1" style="opacity:0; position:absolute; left:-9999px;">
+  <button class="btn copy-btn" onclick="copyText('copyText1')"><i class="fa fa-copy"></i> Copy</button>
 </div>
 
 <div class="card">
-  POWERTUNNEL APP
-  <a href="https://bit.ly/PowerTunnelApk" download class="btn download-btn"><i class="fa fa-download"></i> Download</a>
+  MACOB
+  <input type="text" value="15.235.232.75 growtopia1.com
+15.235.232.75 growtopia2.com
+15.235.232.75 www.growtopia1.com
+15.235.232.75 www.growtopia2.com" id="copyText2" style="opacity:0; position:absolute; left:-9999px;">
+  <button class="btn copy-btn" onclick="copyText('copyText2')"><i class="fa fa-copy"></i> Copy</button>
 </div>
 
 <div class="card">
-  VHOST FILE
-  <a href="https://www.mediafire.com/file/k3xgiaa5pni45ex/OneDev.txt/file" download class="btn download-btn"><i class="fa fa-download"></i> Download</a>
+  WINDOWS
+  <input type="text" value="15.235.232.75 growtopia1.com
+15.235.232.75 growtopia2.com
+15.235.232.75 www.growtopia1.com
+15.235.232.75 www.growtopia2.com" id="copyText3" style="opacity:0; position:absolute; left:-9999px;">
+  <button class="btn copy-btn" onclick="copyText('copyText3')"><i class="fa fa-copy"></i> Copy</button>
 </div>
 
 <div class="card">
-  Download File Istana 4
-  <a href="https://example.com/file4.zip" download class="btn download-btn"><i class="fa fa-download"></i> Download</a>
+  POWERTUNNEL
+  <input type="text" value="https://growsoft.cc/android/9352" id="copyText4" style="opacity:0; position:absolute; left:-9999px;">
+  <button class="btn copy-btn" onclick="copyText('copyText4')"><i class="fa fa-copy"></i> Copy</button>
 </div>
 
 <div class="card">
-  Download File Istana 5
-  <a href="https://example.com/file5.zip" download class="btn download-btn"><i class="fa fa-download"></i> Download</a>
+  Salin Teks Istana 5
+  <input type="text" value="Teks mewah 5 siap dicopy!" id="copyText5" style="opacity:0; position:absolute; left:-9999px;">
+  <button class="btn copy-btn" onclick="copyText('copyText5')"><i class="fa fa-copy"></i> Copy</button>
 </div>
+
 </div>
 
 <script>
@@ -175,7 +190,7 @@ function copyText(id){
 
 // Partikel
 const particles=[];
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
   const p=document.createElement('div');
   p.className='particle';
   p.style.left=Math.random()*window.innerWidth+'px';
@@ -186,7 +201,7 @@ for(let i=0;i<100;i++){
   particles.push({el:p,x:parseFloat(p.style.left),y:parseFloat(p.style.top)});
 }
 
-// Animasi partikel tertarik ke kursor/jari
+// Partikel tertarik ke pointer
 let pointer={x:window.innerWidth/2,y:window.innerHeight/2};
 document.addEventListener('mousemove',e=>{pointer.x=e.clientX; pointer.y=e.clientY;});
 document.addEventListener('touchmove',e=>{pointer.x=e.touches[0].clientX; pointer.y=e.touches[0].clientY;});
@@ -203,7 +218,7 @@ function animateParticles(){
 }
 animateParticles();
 
-// Cahaya card interaktif mouse + touch
+// Cahaya card interaktif
 const cards=document.querySelectorAll('.card');
 cards.forEach(card=>{
   const updateLight=(x,y)=>{card.style.setProperty('--x',`${x/5}px`); card.style.setProperty('--y',`${y/5}px`);}
@@ -220,4 +235,4 @@ cards.forEach(card=>{
 </script>
 
 </body>
-    </html>
+</html>
