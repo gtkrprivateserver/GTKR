@@ -4,234 +4,172 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Growtopia Korea Private Server | How To Play</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
-}
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-/* Container full screen */
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: auto;
-  gap: 30px;
-  padding: 40px;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  overflow-y: auto; /* Bisa scroll vertical kalau terlalu banyak card */
-}
+    html, body {
+        height: 100%;
+        width: 100%;
+        background-color: #0b0b0b;
+        font-family: 'Arial', sans-serif;
+        color: #fff;
+        overflow: hidden;
+    }
 
-/* Card */
-.card {
-  position: relative;
-  background: linear-gradient(145deg, #222, #111);
-  border: 4px solid gold;
-  border-radius: 25px;
-  padding: 30px 20px;
-  color: gold;
-  font-weight: bold;
-  text-align: center;
-  overflow: visible;
-  box-shadow: 0 20px 40px rgba(255,215,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 25px;
-  pointer-events: none;
-  background: radial-gradient(circle at center, rgba(255,215,0,0.3), rgba(255,215,0,0) 70%);
-  filter: blur(20px);
-  opacity: 0.9;
-  transform: translate(var(--x,0), var(--y,0));
-  transition: transform 0.05s;
-  z-index: -1;
-}
+    /* Container full screen scrollable */
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        width: 100%;
+        height: 100%;
+        padding: 40px;
+        overflow-y: auto;
+    }
 
-.card:hover {transform: translateY(-10px); box-shadow:0 25px 50px rgba(255,215,0,0.7),0 0 35px gold;}
+    .card {
+        background: #111;
+        border: 2px solid #ff00ff;
+        border-radius: 20px;
+        padding: 25px;
+        width: 220px;
+        text-align: center;
+        box-shadow: 0 0 25px #ff00ff, 0 15px 30px rgba(255,0,255,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    }
 
-.btn {
-  margin-top: 20px;
-  padding: 14px 28px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 16px;
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  transition: all 0.3s;
-  cursor: pointer;
-}
+    .card:hover {
+        transform: translateY(-15px) scale(1.1);
+        box-shadow: 0 0 50px #ff00ff, 0 20px 50px rgba(255,0,255,0.5);
+        border-color: #ff00ff;
+    }
 
-.copy-btn {
-  background: linear-gradient(45deg, gold, #ffd700);
-  color: #111;
-  box-shadow: 0 0 10px gold;
-}
-.copy-btn:hover {background: linear-gradient(45deg,#fff700,#ffdd33); transform: scale(1.1); box-shadow:0 0 25px gold,0 0 35px #ffd700;}
+    .card h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-shadow: 0 0 8px #ff00ff;
+    }
 
-.download-btn {
-  background: linear-gradient(45deg,#222,#111);
-  color: gold;
-  border: 3px solid gold;
-}
-.download-btn:hover {background: gold; color: #111; transform: scale(1.1); box-shadow:0 0 25px gold,0 0 35px #ffd700;}
+    .button {
+        display: inline-block;
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 12px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        background: linear-gradient(45deg, #ff00ff, #ff007f);
+        box-shadow: 0 0 12px #ff00ff;
+        transition: all 0.3s;
+    }
 
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: gold;
-  border-radius: 50%;
-  opacity: 0.8;
-  pointer-events: none;
-}
+    .button:hover {
+        background: linear-gradient(45deg, #ff007f, #ff00ff);
+        box-shadow: 0 0 25px #ff00ff, 0 0 50px #ff007f;
+    }
+
+    .download-card {
+        border-color: #00ffff;
+        box-shadow: 0 0 25px #00ffff, 0 15px 30px rgba(0,255,255,0.3);
+    }
+
+    .download-card:hover {
+        border-color: #00ffff;
+        box-shadow: 0 0 50px #00ffff, 0 20px 50px rgba(0,255,255,0.5);
+    }
+
+    .download-card .button {
+        background: linear-gradient(45deg, #00ffff, #007fff);
+        box-shadow: 0 0 12px #00ffff;
+    }
+
+    .download-card .button:hover {
+        background: linear-gradient(45deg, #007fff, #00ffff);
+        box-shadow: 0 0 25px #00ffff, 0 0 50px #007fff;
+    }
+
+    /* Scrollbar neon */
+    .cards-container::-webkit-scrollbar {
+        width: 12px;
+    }
+    .cards-container::-webkit-scrollbar-track {
+        background: #111;
+        border-radius: 10px;
+    }
+    .cards-container::-webkit-scrollbar-thumb {
+        background: #ff00ff;
+        border-radius: 10px;
+    }
+
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="cards-container">
+    <!-- 5 Card Copy -->
+    <div class="card">
+        <h3>Copy Text 1</h3>
+        <button class="button" onclick="copyText('Text 1')">Copy</button>
+    </div>
+    <div class="card">
+        <h3>Copy Text 2</h3>
+        <button class="button" onclick="copyText('Text 2')">Copy</button>
+    </div>
+    <div class="card">
+        <h3>Copy Text 3</h3>
+        <button class="button" onclick="copyText('Text 3')">Copy</button>
+    </div>
+    <div class="card">
+        <h3>Copy Text 4</h3>
+        <button class="button" onclick="copyText('Text 4')">Copy</button>
+    </div>
+    <div class="card">
+        <h3>Copy Text 5</h3>
+        <button class="button" onclick="copyText('Text 5')">Copy</button>
+    </div>
 
-<!-- 5 Card Copy -->
-<div class="card">
-  IOS
-  <input type="text" value="https://growsoft.cc/ios/9352" id="copyText1" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText1')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  MACOB
-  <input type="text" value="15.235.232.75 growtopia1.com
-15.235.232.75 growtopia2.com
-15.235.232.75 www.growtopia1.com
-15.235.232.75 www.growtopia2.com" id="copyText2" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText2')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  WINDOWS
-  <input type="text" value="15.235.232.75 growtopia1.com
-15.235.232.75 growtopia2.com
-15.235.232.75 www.growtopia1.com
-15.235.232.75 www.growtopia2.com" id="copyText3" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText3')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  POWERTUNNEL
-  <input type="text" value="https://growsoft.cc/android/9352" id="copyText4" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText4')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  Salin Teks Istana 5
-  <input type="text" value="Teks mewah 5 siap dicopy!" id="copyText5" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText5')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<!-- 5 Card Download -->
-<div class="card">
-  IOS
-  <input type="text" value="https://growsoft.cc/ios/9352" id="copyText1" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText1')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  MACOB
-  <input type="text" value="15.235.232.75 growtopia1.com
-15.235.232.75 growtopia2.com
-15.235.232.75 www.growtopia1.com
-15.235.232.75 www.growtopia2.com" id="copyText2" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText2')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  WINDOWS
-  <input type="text" value="15.235.232.75 growtopia1.com
-15.235.232.75 growtopia2.com
-15.235.232.75 www.growtopia1.com
-15.235.232.75 www.growtopia2.com" id="copyText3" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText3')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  POWERTUNNEL
-  <input type="text" value="https://growsoft.cc/android/9352" id="copyText4" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText4')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
-<div class="card">
-  Salin Teks Istana 5
-  <input type="text" value="Teks mewah 5 siap dicopy!" id="copyText5" style="opacity:0; position:absolute; left:-9999px;">
-  <button class="btn copy-btn" onclick="copyText('copyText5')"><i class="fa fa-copy"></i> Copy</button>
-</div>
-
+    <!-- 5 Card Download -->
+    <div class="card download-card">
+        <h3>Download File 1</h3>
+        <a href="#" class="button" download>Download</a>
+    </div>
+    <div class="card download-card">
+        <h3>Download File 2</h3>
+        <a href="#" class="button" download>Download</a>
+    </div>
+    <div class="card download-card">
+        <h3>Download File 3</h3>
+        <a href="#" class="button" download>Download</a>
+    </div>
+    <div class="card download-card">
+        <h3>Download File 4</h3>
+        <a href="#" class="button" download>Download</a>
+    </div>
+    <div class="card download-card">
+        <h3>Download File 5</h3>
+        <a href="#" class="button" download>Download</a>
+    </div>
 </div>
 
 <script>
-// Copy Function
-function copyText(id){
-  const copyInput=document.getElementById(id);
-  copyInput.select();
-  copyInput.setSelectionRange(0,99999);
-  document.execCommand("copy");
-  alert("Text berhasil dicopy!");
-}
-
-// Partikel
-const particles=[];
-for(let i=0;i<120;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*window.innerWidth+'px';
-  p.style.top=Math.random()*window.innerHeight+'px';
-  p.style.width=2+Math.random()*6+'px';
-  p.style.height=p.style.width;
-  document.body.appendChild(p);
-  particles.push({el:p,x:parseFloat(p.style.left),y:parseFloat(p.style.top)});
-}
-
-// Partikel tertarik ke pointer
-let pointer={x:window.innerWidth/2,y:window.innerHeight/2};
-document.addEventListener('mousemove',e=>{pointer.x=e.clientX; pointer.y=e.clientY;});
-document.addEventListener('touchmove',e=>{pointer.x=e.touches[0].clientX; pointer.y=e.touches[0].clientY;});
-
-function animateParticles(){
-  particles.forEach(p=>{
-    const dx=(pointer.x - p.x)*0.02;
-    const dy=(pointer.y - p.y)*0.02;
-    p.x+=dx;
-    p.y+=dy;
-    p.el.style.transform=`translate(${p.x}px,${p.y}px)`;
-  });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-// Cahaya card interaktif
-const cards=document.querySelectorAll('.card');
-cards.forEach(card=>{
-  const updateLight=(x,y)=>{card.style.setProperty('--x',`${x/5}px`); card.style.setProperty('--y',`${y/5}px`);}
-  card.addEventListener('mousemove',e=>{
-    const rect=card.getBoundingClientRect();
-    updateLight(e.clientX - rect.left - rect.width/2, e.clientY - rect.top - rect.height/2);
-  });
-  card.addEventListener('touchmove',e=>{
-    const touch=e.touches[0];
-    const rect=card.getBoundingClientRect();
-    updateLight(touch.clientX - rect.left - rect.width/2, touch.clientY - rect.top - rect.height/2);
-  });
-});
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert(text + " successfully copied!");
+        });
+    }
 </script>
 
 </body>
