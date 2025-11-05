@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTKR Neon 3D + Discord Live Chat</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+body { font-family: 'Orbitron', sans-serif; background: radial-gradient(circle at top, #0f0c29, #302b63, #24243e); margin:0; padding:20px; color:#fff; display:flex; flex-direction:column; align-items:center; }
+.container { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; width:90%; max-width:1000px; margin-bottom:50px; }
+.card { background:#111; border-radius:20px; padding:25px; text-align:center; box-shadow:0 0 20px #ff00ff,0 0 40px #00ffff,0 0 60px #ff00ff; transition: transform 0.4s, box-shadow 0.4s; cursor:pointer; }
+.card:hover { transform: rotateY(20deg) rotateX(10deg) translateY(-15px); box-shadow:0 0 40px #ff00ff,0 0 80px #00ffff,0 0 120px #ff00ff; }
+.card h2 { font-size:32px; margin-bottom:15px; color:#00ffff; text-shadow:0 0 10px #00ffff,0 0 20px #ff00ff; }
+.text-content { font-size:16px; margin-bottom:20px; color:#fff; word-wrap:break-word; }
+.buttons { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; }
+.btn { padding:12px 25px; border:none; border-radius:12px; color:white; font-weight:bold; font-size:16px; cursor:pointer; transition:all 0.3s ease; box-shadow:0 0 10px #00ffff,0 0 20px #ff00ff; }
+.copy-btn { background-color:#ff6b81; }
+.copy-btn:hover { box-shadow:0 0 20px #ff4757,0 0 40px #ff6b81; transform:scale(1.05); }
+.download-btn { background-color:#1dd1a1; }
+.download-btn:hover { box-shadow:0 0 20px #10ac84,0 0 40px #1dd1a1; transform:scale(1.05); }
+
+/* Contact Section */
+.contact { text-align:center; padding:30px 20px; background:#111; border-radius:20px; box-shadow:0 0 20px #ff00ff,0 0 40px #00ffff; width:90%; max-width:600px; margin-bottom:50px; }
+.contact h2 { font-size:28px; margin-bottom:15px; color:#00ffff; text-shadow:0 0 10px #00ffff,0 0 20px #ff00ff; }
+.contact p { font-size:16px; margin-bottom:20px; }
+.contact-btn { padding:12px 25px; border:none; border-radius:12px; font-weight:bold; font-size:16px; cursor:pointer; background-color:#ff6b81; color:white; box-shadow:0 0 10px #ff6b81,0 0 20px #ff4757; transition:all 0.3s ease; text-decoration:none; }
+.contact-btn:hover { box-shadow:0 0 20px #ff4757,0 0 40px #ff6b81; transform:scale(1.05); }
+
+/* Discord Live Chat */
+#chat-btn { position:fixed; bottom:30px; right:30px; background-color:#7289da; color:#fff; border:none; border-radius:50%; width:60px; height:60px; font-size:24px; cursor:pointer; box-shadow:0 0 15px #7289da,0 0 30px #99aab5; transition:all 0.3s ease; }
+#chat-btn:hover { transform:scale(1.1); }
+#chat-box { position:fixed; bottom:100px; right:30px; width:320px; max-height:400px; background:#111; border-radius:20px; box-shadow:0 0 20px #7289da,0 0 40px #99aab5; display:none; flex-direction:column; overflow:hidden; }
+#chat-box header { background:#222; padding:10px; text-align:center; font-weight:bold; color:#7289da; text-shadow:0 0 5px #7289da; }
+#chat-messages { flex:1; padding:10px; overflow-y:auto; color:#fff; font-size:14px; }
+#chat-input { display:flex; border-top:1px solid #555; }
+#chat-input input { flex:1; padding:10px; border:none; outline:none; background:#333; color:#fff; }
+#chat-input button { padding:0 15px; border:none; background:#7289da; color:#fff; cursor:pointer; transition:all 0.3s ease; }
+#chat-input button:hover { background:#5b6eae; }
+p { margin:5px 0; }
+.staff { color:#00ffea; }
+.user { color:#ff6b81; }
+</style>
+</head>
+<body>
+
+<!-- Cards -->
+<div class="container">
+  <div class="card">
+    <h2>GTKR</h2>
+    <div class="text-content" id="text1">Teks pertama untuk disalin dan di-download</div>
+    <div class="buttons">
+      <button class="btn copy-btn" onclick="copyText('text1', this)">Salin</button>
+      <button class="btn download-btn" onclick="downloadText('text1')">Download</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>GTKR</h2>
+    <div class="text-content" id="text2">Teks kedua untuk disalin dan di-download</div>
+    <div class="buttons">
+      <button class="btn copy-btn" onclick="copyText('text2', this)">Salin</button>
+      <button class="btn download-btn" onclick="downloadText('text2')">Download</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>GTKR</h2>
+    <div class="text-content" id="text3">Teks ketiga untuk disalin dan di-download</div>
+    <div class="buttons">
+      <button class="btn copy-btn" onclick="copyText('text3', this)">Salin</button>
+      <button class="btn download-btn" onclick="downloadText('text3')">Download</button>
+    </div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="contact">
+  <h2>Contact Us</h2>
+  <p>Butuh bantuan? Hubungi staff kami untuk informasi lebih lanjut.</p>
+  <a href="mailto:gtkrprivateserver@gmail.com" class="contact-btn">Hubungi Staff</a>
+</div>
+
+<!-- Discord Live Chat -->
+<button id="chat-btn">💬</button>
+<div id="chat-box">
+  <header>Live Chat Discord</header>
+  <div id="chat-messages"></div>
+  <div id="chat-input">
+    <input type="text" id="user-msg" placeholder="Tulis pesan...">
+    <button onclick="sendMessage()">Kirim</button>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+const chatBox = document.getElementById('chat-box');
+const chatBtn = document.getElementById('chat-btn');
+const chatMessages = document.getElementById('chat-messages');
+const input = document.getElementById('user-msg');
+
+// Toggle chat box
+chatBtn.addEventListener('click', () => {
+  chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+});
+
+// Copy Text
+function copyText(elementId, btn){
+  const text = document.getElementById(elementId).innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const t=btn.inner
