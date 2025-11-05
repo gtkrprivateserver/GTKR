@@ -7,111 +7,96 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <style>
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 40px;
-    background: #000;
-    overflow: hidden;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  overflow: hidden;
 }
 
-/* Partikel emas */
-.particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: gold;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: floatParticle 5s infinite;
-}
-@keyframes floatParticle {
-    0% {transform: translateY(0) scale(0.5); opacity: 0.7;}
-    50% {transform: translateY(-150px) scale(1); opacity: 1;}
-    100% {transform: translateY(-300px) scale(0.5); opacity: 0;}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  justify-items: center;
 }
 
+/* Card */
 .card {
-    background: linear-gradient(145deg, #222, #111);
-    border-radius: 25px;
-    padding: 30px 40px;
-    width: 300px;
-    text-align: center;
-    font-weight: bold;
-    color: gold;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(255,215,0,0.5);
-    border: 4px solid gold;
-    overflow: visible;
-    transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  width: 300px;
+  background: linear-gradient(145deg, #222, #111);
+  border: 4px solid gold;
+  border-radius: 25px;
+  padding: 30px 20px;
+  color: gold;
+  font-weight: bold;
+  text-align: center;
+  overflow: visible;
+  box-shadow: 0 20px 40px rgba(255,215,0,0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Cahaya dinamis mengikuti mouse */
 .card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 25px;
-    pointer-events: none;
-    background: radial-gradient(circle at center, rgba(255,215,0,0.4), rgba(255,215,0,0) 70%);
-    filter: blur(20px);
-    opacity: 0.8;
-    transform: translate(var(--x, 0), var(--y, 0));
-    transition: transform 0.1s;
-    z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 25px;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255,215,0,0.3), rgba(255,215,0,0) 70%);
+  filter: blur(20px);
+  opacity: 0.9;
+  transform: translate(var(--x,0), var(--y,0));
+  transition: transform 0.05s;
+  z-index: -1;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(255,215,0,0.7), 0 0 30px gold;
-}
+.card:hover {transform: translateY(-10px); box-shadow: 0 25px 50px rgba(255,215,0,0.7),0 0 35px gold;}
 
 .btn {
-    cursor: pointer;
-    padding: 14px 28px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 16px;
-    transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+  margin-top: 20px;
+  padding: 14px 28px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
+/* Copy Button */
 .copy-btn {
-    background: linear-gradient(45deg, gold, #ffd700);
-    color: #111;
-    box-shadow: 0 0 10px gold;
+  background: linear-gradient(45deg, gold, #ffd700);
+  color: #111;
+  box-shadow: 0 0 10px gold;
 }
+.copy-btn:hover {background: linear-gradient(45deg, #fff700, #ffdd33); transform: scale(1.1); box-shadow:0 0 25px gold,0 0 35px #ffd700;}
 
-.copy-btn:hover {
-    background: linear-gradient(45deg, #fff700, #ffdd33);
-    transform: scale(1.1);
-    box-shadow: 0 0 25px gold, 0 0 35px #ffd700;
-}
-
+/* Download Button */
 .download-btn {
-    background: linear-gradient(45deg, #222, #111);
-    color: gold;
-    border: 3px solid gold;
+  background: linear-gradient(45deg, #222, #111);
+  color: gold;
+  border: 3px solid gold;
 }
+.download-btn:hover {background: gold; color: #111; transform: scale(1.1); box-shadow:0 0 25px gold,0 0 35px #ffd700;}
 
-.download-btn:hover {
-    background: gold;
-    color: #111;
-    transform: scale(1.1);
-    box-shadow: 0 0 25px gold, 0 0 35px #ffd700;
+/* Particle */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: gold;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
 }
 </style>
 </head>
 <body>
+
+<div class="container">
 
 <!-- 5 Card Copy -->
 <div class="card">
@@ -151,6 +136,7 @@ body {
 </div>
 
 <!-- 5 Card Download -->
+<!-- 5 Card Download -->
 <div class="card">
   VHOSTS APP
   <a href="https://www.apkmirror.com/apk/xfalcon/virtual-hosts/virtual-hosts-2-1-0-release/virtual-hosts-2-1-0-android-apk-download/" download class="btn download-btn"><i class="fa fa-download"></i> Download</a>
@@ -175,42 +161,63 @@ body {
   Download File Istana 5
   <a href="https://example.com/file5.zip" download class="btn download-btn"><i class="fa fa-download"></i> Download</a>
 </div>
+</div>
 
 <script>
-function copyText(id) {
-  var copyInput = document.getElementById(id);
-  copyInput.style.opacity = 1;
+// Copy Function
+function copyText(id){
+  const copyInput=document.getElementById(id);
   copyInput.select();
-  copyInput.setSelectionRange(0, 99999);
+  copyInput.setSelectionRange(0,99999);
   document.execCommand("copy");
-  copyInput.style.opacity = 0;
   alert("Text berhasil dicopy!");
 }
 
-// Partikel emas acak
-for (let i = 0; i < 50; i++) {
-  const particle = document.createElement('div');
-  particle.className = 'particle';
-  particle.style.left = Math.random() * window.innerWidth + 'px';
-  particle.style.top = Math.random() * window.innerHeight + 'px';
-  particle.style.animationDelay = Math.random() * 5 + 's';
-  particle.style.width = 3 + Math.random() * 6 + 'px';
-  particle.style.height = particle.style.width;
-  document.body.appendChild(particle);
+// Partikel
+const particles=[];
+for(let i=0;i<100;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*window.innerWidth+'px';
+  p.style.top=Math.random()*window.innerHeight+'px';
+  p.style.width=2+Math.random()*6+'px';
+  p.style.height=p.style.width;
+  document.body.appendChild(p);
+  particles.push({el:p,x:parseFloat(p.style.left),y:parseFloat(p.style.top)});
 }
 
-// Animasi cahaya mengikuti mouse
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width/2;
-    const y = e.clientY - rect.top - rect.height/2;
-    card.style.setProperty('--x', `${x/5}px`);
-    card.style.setProperty('--y', `${y/5}px`);
+// Animasi partikel tertarik ke kursor/jari
+let pointer={x:window.innerWidth/2,y:window.innerHeight/2};
+document.addEventListener('mousemove',e=>{pointer.x=e.clientX; pointer.y=e.clientY;});
+document.addEventListener('touchmove',e=>{pointer.x=e.touches[0].clientX; pointer.y=e.touches[0].clientY;});
+
+function animateParticles(){
+  particles.forEach(p=>{
+    const dx=(pointer.x - p.x)*0.02;
+    const dy=(pointer.y - p.y)*0.02;
+    p.x+=dx;
+    p.y+=dy;
+    p.el.style.transform=`translate(${p.x}px,${p.y}px)`;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// Cahaya card interaktif mouse + touch
+const cards=document.querySelectorAll('.card');
+cards.forEach(card=>{
+  const updateLight=(x,y)=>{card.style.setProperty('--x',`${x/5}px`); card.style.setProperty('--y',`${y/5}px`);}
+  card.addEventListener('mousemove',e=>{
+    const rect=card.getBoundingClientRect();
+    updateLight(e.clientX - rect.left - rect.width/2, e.clientY - rect.top - rect.height/2);
+  });
+  card.addEventListener('touchmove',e=>{
+    const touch=e.touches[0];
+    const rect=card.getBoundingClientRect();
+    updateLight(touch.clientX - rect.left - rect.width/2, touch.clientY - rect.top - rect.height/2);
   });
 });
 </script>
 
 </body>
-</html>
+    </html>
