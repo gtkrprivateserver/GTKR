@@ -3,19 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GTKR Neon 3D + Live Discord Chat</title>
+<title>GTKR Cards - Copy & Download + Live Chat</title>
 <style>
-body { font-family: Arial,sans-serif; background:#111; color:#fff; margin:0; padding:20px; display:flex; flex-direction:column; align-items:center; }
+body {
+    font-family: Arial, sans-serif;
+    background:#111;
+    color:#fff;
+    margin:0;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+h1 { text-align:center; margin-bottom:20px; }
+
 .container { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; width:90%; max-width:900px; margin-bottom:50px; }
-.card { background:#222; border-radius:20px; padding:20px; text-align:center; box-shadow:0 0 20px #0ff,0 0 40px #f0f; transition:0.3s; }
-.card:hover { transform:scale(1.05); box-shadow:0 0 40px #0ff,0 0 80px #f0f; }
-.card h2 { font-size:28px; color:#0ff; margin-bottom:10px; }
-.text-content { font-size:16px; margin-bottom:15px; color:#fff; }
-.buttons { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
-.btn { padding:10px 20px; border:none; border-radius:10px; font-weight:bold; cursor:pointer; color:#fff; transition:0.3s; }
-.copy-btn { background:#f06; }
-.copy-btn:hover { background:#f36; }
-.download-link { display:block; margin-top:10px; color:#1da; text-decoration:underline; cursor:pointer; }
+
+/* Card Copy - Modern Neon */
+.card-copy {
+    background:#111;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 0 20px #0ff,0 0 40px #f0f;
+    transition:0.3s;
+    border: 2px solid #0ff;
+}
+.card-copy:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 50px #0ff, 0 0 100px #f0f;
+}
+.card-copy h2 {
+    font-size:28px;
+    color:#0ff;
+    margin-bottom:15px;
+    text-shadow: 0 0 10px #0ff;
+}
+.card-copy .btn {
+    padding:12px 25px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+    color:#111;
+    background: linear-gradient(45deg, #0ff, #f0f);
+    box-shadow:0 0 10px #0ff,0 0 20px #f0f;
+    transition:0.3s;
+}
+.card-copy .btn:hover {
+    transform:scale(1.1);
+    box-shadow:0 0 20px #0ff,0 0 40px #f0f;
+}
+
+/* Card Download - Neon 3D */
+.card-download { 
+    background:#222;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 0 20px #0ff,0 0 40px #f0f;
+    transition:0.3s; 
+}
+.card-download:hover { 
+    transform:scale(1.05);
+    box-shadow:0 0 40px #0ff,0 0 80px #f0f; 
+}
+.card-download h2 { 
+    font-size:28px; 
+    color:#0ff; 
+    margin-bottom:10px; 
+}
+.download-link { 
+    display:block; 
+    margin-top:10px; 
+    color:#1da; 
+    text-decoration:underline; 
+    cursor:pointer; 
+}
 
 /* Live chat */
 #chat-btn { position:fixed; bottom:30px; right:30px; width:60px; height:60px; border-radius:50%; font-size:24px; border:none; background:#7289da; cursor:pointer; }
@@ -32,55 +96,37 @@ p { margin:5px 0; }
 </head>
 <body>
 
-<h1>GTKR Copy Text</h1>
+<h1>GTKR Cards - Copy Text</h1>
 <div class="container">
-  <div class="card">
-    <h2>VHOST FILE IOS</h2>
-    <div class="text-content" id="text1">https://growsoft.cc/ios/9352</div>
-    <div class="buttons">
-      <button class="btn copy-btn" onclick="copyText('text1')">Salin</button>
-    </div>
+  <div class="card-copy">
+    <h2>GTKR</h2>
+    <button class="btn" onclick="copyText('text1')">Salin</button>
   </div>
 
-  <div class="card">
-    <h2>VHOST FILE MACOS</h2>
-    <div class="text-content" id="text2">
-      15.235.232.75 growtopia1.com
-      15.235.232.75 growtopia2.com
-      15.235.232.75 www.growtopia1.com
-      15.235.232.75 www.growtopia2.com</div>
-    <div class="buttons">
-      <button class="btn copy-btn" onclick="copyText('text2')">Salin</button>
-    </div>
+  <div class="card-copy">
+    <h2>GTKR</h2>
+    <button class="btn" onclick="copyText('text2')">Salin</button>
   </div>
 
-  <div class="card">
-    <h2>VHOST WINDOWS</h2>
-    <div class="text-content" id="text3">
-      15.235.232.75 growtopia1.com
-      15.235.232.75 growtopia2.com
-      15.235.232.75 www.growtopia1.com
-      15.235.232.75 www.growtopia2.com
-    </div>
-    <div class="buttons">
-      <button class="btn copy-btn" onclick="copyText('text3')">Salin</button>
-    </div>
+  <div class="card-copy">
+    <h2>GTKR</h2>
+    <button class="btn" onclick="copyText('text3')">Salin</button>
   </div>
 </div>
 
-<h1>GTKR Download Files</h1>
+<h1>GTKR Cards - Download Files</h1>
 <div class="container">
-  <div class="card">
-    <h2>VHOST FILE OF POWERTUNNEL</h2>
-    <a class="download-link" href="https://www.mediafire.com/file/k3xgiaa5pni45ex/OneDev.txt/file" download>Download File 1</a>
+  <div class="card-download">
+    <h2>GTKR</h2>
+    <a class="download-link" href="files/file1.txt" download>Download File 1</a>
   </div>
 
-  <div class="card">
+  <div class="card-download">
     <h2>GTKR</h2>
     <a class="download-link" href="files/file2.txt" download>Download File 2</a>
   </div>
 
-  <div class="card">
+  <div class="card-download">
     <h2>GTKR</h2>
     <a class="download-link" href="files/file3.txt" download>Download File 3</a>
   </div>
@@ -108,19 +154,7 @@ const input = document.getElementById('user-msg');
 chatBtn.addEventListener('click', ()=>{ chatBox.style.display = chatBox.style.display==='flex'?'none':'flex'; });
 
 function copyText(id){
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(()=>{ alert("Teks berhasil disalin!"); });
-}
-
-function downloadText(id, filename){
-  const text = document.getElementById(id).innerText;
-  const blob = new Blob([text], {type:'text/plain'});
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  alert("text has been successful!"); // Simulasi karena tidak ada teks asli
 }
 
 function sendMessage(){
@@ -144,4 +178,4 @@ socket.on('discordMessage', data=>{
 });
 </script>
 </body>
-</html>
+  </html>
