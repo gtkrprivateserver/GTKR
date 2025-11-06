@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Process</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+      padding: 50px;
+      color: #1e293b;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 480px;
+      margin: auto;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    h2 { margin-bottom: 10px; }
+    p { margin-bottom: 15px; }
+    img.qr {
+      width: 220px;
+      height: 220px;
+      border-radius: 10px;
+      border: 2px solid #e5e7eb;
+      margin: 10px 0 20px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input[type=file] {
+      display: block;
+      margin: 15px auto;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px;
+      width: 100%;
+    }
+    button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    button:hover { background: #3730a3; }
+    .success {
+      color: #16a34a;
+      font-weight: 600;
+      margin-top: 15px;
+      display: none;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>💳 Order Payment</h2>
+    <p id="info"></p>
+
+    <p class="note">Please scan the following QRIS to make a payment:</p>
+    <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://link.dana.id/minta?full_url=https://qr.dana.id/v1/281012012023090653881621" alt="QRIS Pembayaran">
+    <p class="note">Make sure the recipient name is correct before making payment</p>
+
+    <input type="file" id="proof" accept="image/*">
+    <button onclick="sendProof()">Send Proof of Payment</button>
+    <div class="success" id="successMsg">✅ Proof of payment has been sent successfully!</div>
+  </div>
+
+  <script>
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1434704722467618889/iHN5u7vAzvScV3oRTHqWNiEcoiwK-E1Lng3gYc9dYv8cJPp9T_JsWja7tnYnZ3u-orH4"; // Ganti ke webhook kamu
+    const buyerName = localStorage.getItem("buyerName");
+    const itemName = localStorage.getItem("itemName");
+    const itemPrice = localStorage.getItem("itemPrice");
+    document.getElementById("info").innerText =
+      `Pembayaran untuk ${itemName} (Rp${itemPrice}) oleh ${buyerName}`;
+
+    async function sendProof() {
+      const file = document.getElementById("proof").files[0];
+      if (!file) return alert("Please select the proof of payment image");
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("payload_json", JSON.stringify({
+        username: "Toko Bot",
+        embeds: [{
+          title: "🟢 Payment Received",
+          color: 0x22C55E,
+          fields: [
+            { name: "Buyer Name", value: buyerName },
+            { name: "Item", value: itemName },
+            { name: "Harga", value: `Rp${itemPrice}` },
+            { name: "Status", value: "🟢 Payment confirmed" }
+          ],
+          timestamp: new Date()
+        }]
+      }));
+
+      await fetch(WEBHOOK_URL, { method: "POST", body: formData });
+
+      document.getElementById("successMsg").style.display = "block";
+      localStorage.clear();
+      setTimeout(() => { window.location.href = "store.html"; }, 2500);
+    }
+  </script>
+</body>
+</html>
