@@ -50,19 +50,19 @@
     async function successPayment() {
       document.getElementById('status').innerText = '✅ Pembayaran Berhasil!';
       await kirimDiscord("Payment Success", 0x22C55E);
-      setTimeout(() => window.location.href = 'success.html', 2000);
+      setTimeout(() => window.location.href = 'payment-success.html', 2000);
     }
 
     // Tombol Payment Failed
     async function failPayment() {
       document.getElementById('status').innerText = '❌ Pembayaran Gagal';
       await kirimDiscord("Payment Failed", 0xDC2626);
-      setTimeout(() => window.location.href = 'fail.html', 2500);
+      setTimeout(() => window.location.href = 'payment-unsuccess.html', 2500);
     }
 
     // Kirim notifikasi ke Discord
     async function kirimDiscord(status, color) {
-      const webhook = "DISCORD_WEBHOOK_URL_KAMU";
+      const webhook = "https://discord.com/api/webhooks/1434704722467618889/iHN5u7vAzvScV3oRTHqWNiEcoiwK-E1Lng3gYc9dYv8cJPp9T_JsWja7tnYnZ3u-orH4";
       await fetch(webhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
