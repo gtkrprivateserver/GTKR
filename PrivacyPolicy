@@ -1,237 +1,105 @@
-<!doctype html>
+GTKRPS Privacy Policy / Kebijakan Privasi GTKRPS
 
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>GTKRPS — Privacy Policy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f172a; /* dark navy */
-      --card:#0b1220;
-      --accent:linear-gradient(90deg,#7c3aed,#06b6d4);
-      --muted:#94a3b8;
-      --glass: rgba(255,255,255,0.03);
-    }
-    *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; margin:0; background:radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.08), transparent), radial-gradient(900px 500px at 90% 90%, rgba(6,182,212,0.06), transparent), #071026; color:#e6eef8; -webkit-font-smoothing:antialiased;}
-    .container{max-width:980px;margin:48px auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:14px}
-.logo{width:56px;height:56px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:white;font-weight:700;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
-h1{margin:0;font-size:20px}
-p.lead{margin:0;color:var(--muted);font-size:13px}
+Last Updated / Terakhir Diperbarui: [Tanggal Pembaruan]
 
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:20px;border-radius:14px;margin-top:20px}
-.meta{display:flex;gap:12px;align-items:center}
-.meta time{color:var(--muted);font-size:13px}
+Welcome to GTKRPS. Your privacy is important to us. This Privacy Policy explains how GTKRPS (“we”, “our”, or “us”) collects, uses, and protects your information when you use our mobile application, website, or other related services (collectively, the “Service”).
+Selamat datang di GTKRPS. Privasi Anda penting bagi kami. Kebijakan Privasi ini menjelaskan bagaimana GTKRPS (“kami”) mengumpulkan, menggunakan, dan melindungi informasi Anda saat menggunakan aplikasi, situs web, atau layanan terkait kami (“Layanan”).
 
-nav.tocs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.toc-btn{background:var(--glass);border:1px solid rgba(255,255,255,0.02);padding:8px 12px;border-radius:10px;font-size:13px;color:var(--muted);cursor:pointer}
+---
 
-.grid{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:22px}
-@media (max-width:880px){.grid{grid-template-columns:1fr}}
+1. Information We Collect / Informasi yang Kami Kumpulkan
 
-main .section{margin-bottom:18px}
-h2{margin:0 0 8px 0;font-size:16px}
-.muted{color:var(--muted);font-size:13px}
-ul{padding-left:20px}
-code{background:rgba(0,0,0,0.2);padding:2px 6px;border-radius:6px;font-size:13px}
+We may collect the following types of information:
+Kami dapat mengumpulkan jenis informasi berikut:
 
-aside{position:relative}
-.panel{position:sticky;top:22px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03)}
-.lang-toggle{display:flex;gap:6px}
-.btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;color:var(--muted);cursor:pointer}
-.btn.primary{background:var(--accent);color:white;border:none;box-shadow:0 6px 18px rgba(12,74,110,0.18)}
+- Personal Information / Data Pribadi:
+Such as name, email address, or account credentials you provide during registration or communication.
+Seperti nama, alamat email, atau data akun yang Anda berikan saat registrasi atau berkomunikasi.
 
-footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+- Usage Data / Data Penggunaan:
+Including IP address, device information, operating system, app activity, and time of access.
+Termasuk alamat IP, informasi perangkat, sistem operasi, aktivitas aplikasi, dan waktu akses.
 
-/* accordion */
-.acc{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
-.acc summary{list-style:none;padding:12px 16px;cursor:pointer;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));display:flex;justify-content:space-between;align-items:center}
-.acc[open] summary{background:rgba(255,255,255,0.02)}
-.acc p{padding:0 16px 12px 16px;margin:0;color:var(--muted)}
+- Cookies & Tracking Technologies / Cookie & Teknologi Pelacakan:
+Used to personalize content, analyze traffic, and improve the user experience.
+Digunakan untuk menyesuaikan konten, menganalisis lalu lintas, dan meningkatkan pengalaman pengguna.
 
-.badge{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;color:var(--muted)}
+---
 
-.print{display:inline-flex;align-items:center;gap:8px}
-.small{font-size:13px}
+2. How We Use Your Information / Penggunaan Informasi
 
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">GT</div>
-        <div>
-          <h1>GTKRPS — Privacy Policy</h1>
-          <p class="lead">Profesional, ringkas, dan siap untuk App Store & Google Play</p>
-        </div>
-      </div>
-      <div class="meta">
-        <div class="badge">Versi Standar • Dwibahasa</div>
-        <time id="lastUpdated">Last Updated: [Tanggal Pembaruan]</time>
-      </div>
-    </header><div class="card">
-  <div class="grid">
-    <main>
+We use collected information to:
+Kami menggunakan informasi yang dikumpulkan untuk:
 
-      <section class="section" id="intro">
-        <h2>Ringkasan</h2>
-        <p class="muted">GTKRPS menghargai privasi Anda. Dokumen ini menjelaskan jenis data yang kami kumpulkan, bagaimana data tersebut digunakan, hak pengguna, dan langkah-langkah keamanan yang kami terapkan.</p>
-      </section>
+- Provide, operate, and improve the GTKRPS Service.
+Menyediakan, mengoperasikan, dan meningkatkan Layanan GTKRPS.
+- Communicate with you regarding updates, support, or notifications.
+Berkomunikasi dengan Anda terkait pembaruan, dukungan, atau notifikasi.
+- Ensure security, prevent fraud, and comply with legal obligations.
+Menjaga keamanan, mencegah penipuan, dan mematuhi kewajiban hukum.
 
-      <section class="section" id="what">
-        <h2>1. Informasi yang Kami Kumpulkan</h2>
-        <ul>
-          <li><strong>Data Pribadi</strong>: nama, alamat email, dan informasi kontak lain yang Anda berikan.</li>
-          <li><strong>Data Penggunaan</strong>: alamat IP, jenis perangkat, sistem operasi, aktivitas aplikasi.</li>
-          <li><strong>Cookie & Teknologi Pelacakan</strong>: untuk personalisasi dan analitik.</li>
-        </ul>
-      </section>
+---
 
-      <section class="section" id="use">
-        <h2>2. Penggunaan Informasi</h2>
-        <p class="muted">Data digunakan untuk menyediakan dan meningkatkan layanan, memberi notifikasi, serta menjaga keamanan dan integritas platform.</p>
-      </section>
+3. Data Sharing & Disclosure / Pembagian & Pengungkapan Data
 
-      <section class="section" id="sharing">
-        <h2>3. Pembagian Data</h2>
-        <p class="muted">Kami tidak menjual data pribadi. Data hanya dibagikan bila diperlukan oleh hukum atau kepada penyedia layanan pihak ketiga yang terikat perjanjian kerahasiaan.</p>
-      </section>
+We do not sell or rent personal data. We may share information only when:
+Kami tidak menjual atau menyewakan data pribadi. Kami hanya dapat membagikan informasi ketika:
 
-      <section class="section" id="retention">
-        <h2>4. Penyimpanan Data</h2>
-        <p class="muted">Data disimpan hanya selama diperlukan untuk tujuan yang dijelaskan atau sesuai kewajiban hukum.</p>
-      </section>
+- Required by law, legal process, or government request.
+Diperlukan oleh hukum, proses hukum, atau permintaan pemerintah.
+- Necessary for third-party service providers (e.g., analytics, cloud storage) that assist our operations, under strict confidentiality agreements.
+Diperlukan oleh penyedia layanan pihak ketiga (misalnya analitik, penyimpanan cloud) yang membantu operasional kami dengan perjanjian kerahasiaan yang ketat.
 
-      <section class="section" id="security">
-        <h2>5. Keamanan Data</h2>
-        <p class="muted">Kami menerapkan langkah teknis dan organisasi sesuai praktik terbaik industri untuk melindungi data dari akses atau pengungkapan yang tidak sah.</p>
-      </section>
+---
 
-      <section class="section" id="rights">
-        <h2>6. Hak Pengguna</h2>
-        <ul>
-          <li>Akses, perbarui, atau hapus data pribadi.</li>
-          <li>Tarik persetujuan pemrosesan data kapan saja.</li>
-        </ul>
-        <div class="acc">
-          <details>
-            <summary>Bagaimana cara meminta akses/hapus data? <span class="small">(klik untuk membuka)</span></summary>
-            <p>Silakan hubungi tim kami melalui email resmi: <code>privacy@gtkrps.example</code> atau gunakan formulir kontak di situs resmi Anda. Harap sertakan identitas akun untuk verifikasi.</p>
-          </details>
-        </div>
-      </section>
+4. Data Retention / Penyimpanan Data
 
-      <section class="section" id="children">
-        <h2>7. Privasi Anak</h2>
-        <p class="muted">Layanan ini tidak ditujukan untuk anak di bawah 13 tahun. Kami tidak sengaja mengumpulkan data dari anak-anak.</p>
-      </section>
+We retain personal data only as long as necessary to fulfill the purposes described above, or as required by law.
+Kami menyimpan data pribadi hanya selama diperlukan untuk tujuan yang disebutkan di atas, atau sebagaimana diwajibkan oleh hukum.
 
-      <section class="section" id="changes">
-        <h2>8. Perubahan Kebijakan</h2>
-        <p class="muted">Setiap perubahan pada kebijakan ini akan diumumkan dengan memperbarui tanggal "Last Updated" di bagian atas.</p>
-      </section>
+---
 
-      <section class="section" id="permissions">
-        <h2>9. Permissions Used (Izin Aplikasi)</h2>
-        <p class="muted">Contoh izin yang mungkin diminta aplikasi:</p>
-        <ul>
-          <li><strong>Kamera</strong> — untuk fitur pengambilan foto/scan (opsional).</li>
-          <li><strong>Storage / File</strong> — untuk menyimpan atau membuka dokumen yang Anda unggah.</li>
-          <li><strong>Location (opsional)</strong> — bila fitur membutuhkan info lokasi untuk personalisasi.</li>
-        </ul>
-      </section>
+5. Data Security / Keamanan Data
 
-      <section class="section" id="contact">
-        <h2>10. Kontak</h2>
-        <p class="muted">Untuk pertanyaan privasi, hubungi: <br><strong>gtkrprivateserver@gmail.com</strong><br>Atau kunjungi: <a href="https://gtkr.vercel.app" style="color:inherit;opacity:0.85">https://gtkr.vercel.app</a></p>
-      </section>
+We use industry-standard technical and organizational measures to protect your data from unauthorized access, disclosure, or loss.
+Kami menggunakan langkah teknis dan organisasi sesuai standar industri untuk melindungi data Anda dari akses, pengungkapan, atau kehilangan yang tidak sah.
 
-    </main>
+---
 
-    <aside>
-      <div class="panel">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-          <div>
-            <div style="font-weight:600">Pengaturan Tampilan</div>
-            <div class="muted" style="margin-top:4px">Pilih bahasa & cetak kebijakan</div>
-          </div>
-          <div class="print">
-            <button class="btn" onclick="window.print()">Print</button>
-          </div>
-        </div>
+6. Your Rights / Hak Pengguna
 
-        <div style="margin-bottom:12px">
-          <div class="muted small">Bahasa / Language</div>
-          <div class="lang-toggle" style="margin-top:8px">
-            <button class="btn primary" id="btn-id">Bahasa (ID)</button>
-            <button class="btn" id="btn-en">English (EN)</button>
-          </div>
-        </div>
+You have the right to access, update, or delete your personal data.
+Anda memiliki hak untuk mengakses, memperbarui, atau menghapus data pribadi Anda.
 
-        <div style="margin-top:6px">
-          <div class="muted small">Status</div>
-          <div style="margin-top:8px"><span class="badge">Ready for Store Release</span></div>
-        </div>
+To make such a request, please contact us at:
+Untuk membuat permintaan tersebut, silakan hubungi kami di:
+Email: [alamat email GTKRPS]
 
-        <div style="margin-top:14px">
-          <div class="muted small">Quick Links</div>
-          <nav class="tocs" style="margin-top:8px">
-            <button class="toc-btn" onclick="scrollTo('what')">Informasi yang Dikumpulkan</button>
-            <button class="toc-btn" onclick="scrollTo('rights')">Hak Pengguna</button>
-            <button class="toc-btn" onclick="scrollTo('permissions')">Permissions</button>
-          </nav>
-        </div>
+---
 
-      </div>
-    </aside>
+7. Children’s Privacy / Privasi Anak
 
-  </div>
+Our Service is not intended for children under 13 years old. We do not knowingly collect personal data from children.
+Layanan kami tidak ditujukan untuk anak-anak di bawah usia 13 tahun. Kami tidak dengan sengaja mengumpulkan data pribadi dari anak-anak.
 
-  <footer>
-    <div class="muted">© GTKRPS — All rights reserved.</div>
-  </footer>
-</div>
+---
 
-  </div>  <script>
-    // Simple bilingual toggle logic
-    const content = {
-      'id': {
-        lastUpdated: 'Terakhir Diperbarui: [Tanggal Pembaruan]',
-      },
-      'en': {
-        lastUpdated: 'Last Updated: [Update Date]',
-      }
-    }
+8. Changes to This Policy / Perubahan Kebijakan
 
-    const btnId = document.getElementById('btn-id');
-    const btnEn = document.getElementById('btn-en');
-    const lastUpdated = document.getElementById('lastUpdated');
+We may update this Privacy Policy periodically. Any updates will be posted with a new “Last Updated” date at the top of this page.
+Kami dapat memperbarui Kebijakan Privasi ini secara berkala. Setiap pembaruan akan diumumkan dengan tanggal “Terakhir Diperbarui” baru di bagian atas halaman ini.
 
-    function setLang(lang){
-      if(lang==='en'){
-        // swap English text (basic)
-        document.querySelector('h1').textContent = 'GTKRPS — Privacy Policy';
-        document.querySelector('.lead').textContent = 'Professional, concise, ready for App Store & Google Play';
-        lastUpdated.textContent = content.en.lastUpdated;
-        btnEn.classList.add('primary'); btnId.classList.remove('primary');
-      } else {
-        document.querySelector('h1').textContent = 'GTKRPS — Privacy Policy';
-        document.querySelector('.lead').textContent = 'Profesional, ringkas, dan siap untuk App Store & Google Play';
-        lastUpdated.textContent = content.id.lastUpdated;
-        btnId.classList.add('primary'); btnEn.classList.remove('primary');
-      }
-    }
-    setLang('id');
-    btnId.addEventListener('click', ()=>setLang('id'));
-    btnEn.addEventListener('click', ()=>setLang('en'));
+---
 
-    function scrollTo(id){
-      const el = document.getElementById(id);
-      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-    }
-  </script></body>
-</html>
+9. Contact Us / Hubungi Kami
+
+If you have questions, concerns, or feedback regarding this Privacy Policy, please contact us at:
+Jika Anda memiliki pertanyaan, keluhan, atau masukan terkait Kebijakan Privasi ini, silakan hubungi kami di:
+
+Email: [alamat email GTKRPS]
+Website: [URL resmi GTKRPS]
+
+---
+
+By using GTKRPS, you consent to this Privacy Policy.
+Dengan menggunakan GTKRPS, Anda menyetujui Kebijakan Privasi ini.
