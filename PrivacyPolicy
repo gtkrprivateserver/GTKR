@@ -147,7 +147,7 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 
       <section class="section" id="contact">
         <h2>10. Kontak</h2>
-        <p class="muted">Untuk pertanyaan privasi, hubungi: <br><strong>privacy@gtkrps.example</strong><br>Atau kunjungi: <a href="#" style="color:inherit;opacity:0.85">https://www.gtkrps.example</a></p>
+        <p class="muted">Untuk pertanyaan privasi, hubungi: <br><strong>gtkrprivateserver@gmail.com</strong><br>Atau kunjungi: <a href="https://gtkr.vercel.app" style="color:inherit;opacity:0.85">https://gtkr.vercel.app</a></p>
       </section>
 
     </main>
