@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 30px; }
+    .card {
+      background: white; padding: 20px; border-radius: 10px;
+      max-width: 400px; margin: auto; text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    input[type=file] { margin-top: 15px; }
+    button {
+      margin-top: 15px; padding: 8px 15px;
+      background: #5865F2; color: white; border: none;
+      border-radius: 5px; cursor: pointer;
+    }
+    button:hover { background: #4752C4; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Upload Bukti Pembayaran</h2>
+    <p id="info"></p>
+    <input type="file" id="proof" accept="image/*"><br>
+    <button onclick="sendProof()">Kirim ke Discord</button>
+  </div>
+
+  <script>
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1434704722467618889/iHN5u7vAzvScV3oRTHqWNiEcoiwK-E1Lng3gYc9dYv8cJPp9T_JsWja7tnYnZ3u-orH4"; // Ganti sama dengan sebelumnya
+    const buyerName = localStorage.getItem("buyerName");
+    const itemName = localStorage.getItem("itemName");
+    const itemPrice = localStorage.getItem("itemPrice");
+
+    document.getElementById("info").innerText =
+      `Pembayaran untuk ${itemName} (Rp${itemPrice}) oleh ${buyerName}`;
+
+    async function sendProof() {
+      const file = document.getElementById("proof").files[0];
+      if (!file) return alert("Silakan pilih gambar bukti pembayaran.");
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("payload_json", JSON.stringify({
+        username: "Toko Bot",
+        embeds: [{
+          title: "💰 Bukti Pembayaran Diterima",
+          color: 0xFEE75C,
+          fields: [
+            { name: "Nama Pembeli", value: buyerName },
+            { name: "Item", value: itemName },
+            { name: "Harga", value: `Rp${itemPrice}` }
+          ],
+          timestamp: new Date()
+        }]
+      }));
+
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        body: formData
+      });
+
+      alert("Bukti pembayaran berhasil dikirim!");
+      localStorage.clear();
+      window.location.href = "store.html";
+    }
+  </script>
+</body>
+  </html>
