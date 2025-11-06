@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTKR STORE OFFICIAL</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 20px; }
+    .store { display: flex; flex-wrap: wrap; gap: 20px; }
+    .item {
+      background: #fff; border: 1px solid #ddd; border-radius: 10px;
+      padding: 15px; width: 200px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .item img { width: 100%; border-radius: 8px; }
+    .item button {
+      margin-top: 10px; padding: 8px 15px;
+      background: #5865F2; color: white; border: none;
+      border-radius: 5px; cursor: pointer;
+    }
+    .item button:hover { background: #4752C4; }
+    #checkout {
+      margin-top: 30px; background: white; padding: 20px; border-radius: 10px;
+      max-width: 400px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>STORE OFFICIAL</h1>
+  <div class="store">
+    <div class="item" data-name="Item A" data-price="10000">
+      <img src="https://via.placeholder.com/200x150" alt="Item A">
+      <h3>Item A</h3>
+      <p>Rp10.000</p>
+      <button onclick="selectItem(this)">Beli</button>
+    </div>
+    <div class="item" data-name="Item B" data-price="25000">
+      <img src="https://via.placeholder.com/200x150" alt="Item B">
+      <h3>Item B</h3>
+      <p>Rp25.000</p>
+      <button onclick="selectItem(this)">Beli</button>
+    </div>
+  </div>
+
+  <div id="checkout" style="display:none;">
+    <h2>Form Pembelian</h2>
+    <p id="selected-item"></p>
+    <label>Nama Kamu:</label><br>
+    <input type="text" id="buyerName" placeholder="Isi nama kamu"><br><br>
+    <button onclick="sendOrder()">Kirim ke Discord</button>
+  </div>
+
+  <script>
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1435862971090993202/2OZy0OpwfF940MSUfcznU-gv2ld9w2RAJvucFIkzB51fnxvyR8XnWUiK1NcBfUedM2d9"; // Ganti
+    let selectedItem = null;
+
+    function selectItem(btn) {
+      const item = btn.parentElement;
+      selectedItem = {
+        name: item.getAttribute("data-name"),
+        price: item.getAttribute("data-price")
+      };
+      document.getElementById("checkout").style.display = "block";
+      document.getElementById("selected-item").innerText =
+        `Kamu akan membeli: ${selectedItem.name} (Rp${selectedItem.price})`;
+    }
+
+    async function sendOrder() {
+      const buyerName = document.getElementById("buyerName").value.trim();
+      if (!buyerName) return alert("Isi nama kamu dulu!");
+      if (!selectedItem) return;
+
+      const payload = {
+        username: "Toko Bot",
+        embeds: [{
+          title: "🛒 Pesanan Baru",
+          color: 0x57F287,
+          fields: [
+            { name: "Nama Pembeli", value: buyerName },
+            { name: "Item", value: selectedItem.name },
+            { name: "Harga", value: `Rp${selectedItem.price}` }
+          ],
+          timestamp: new Date()
+        }]
+      };
+
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      // Simpan data untuk halaman pembayaran
+      localStorage.setItem("buyerName", buyerName);
+      localStorage.setItem("itemName", selectedItem.name);
+      localStorage.setItem("itemPrice", selectedItem.price);
+
+      // Arahkan ke halaman upload bukti pembayaran
+      window.location.href = "store/payment.html";
+    }
+  </script>
+</body>
+    </html>
