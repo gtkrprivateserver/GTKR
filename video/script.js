@@ -107,7 +107,8 @@ function onYouTubeIframeAPIReady() {
 
 // Load video by URL
 function loadVideo(url, title) {
-    const videoId = url.split('v=')[1].split('&')[0];
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    if(!videoId) return;
     videoTitle.textContent = title;
     if(player && player.loadVideoById){
         player.loadVideoById(videoId);
