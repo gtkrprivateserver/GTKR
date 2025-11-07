@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Video Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#f9f9f9; }
+header { background:#ff0000; color:#fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; }
+header h1 { margin:0; font-size:24px; }
+header button { background:#fff; color:#ff0000; border:none; padding:6px 12px; cursor:pointer; font-weight:bold; border-radius:4px; }
+.container { max-width:1200px; margin:20px auto; padding:0 20px; }
+.upload-form { margin-bottom:20px; background:#fff; padding:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+.upload-form input, .upload-form button { padding:8px; margin:5px 0; }
+.video-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
+.video-card { background:#fff; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:10px; }
+.video-card video { width:100%; border-radius:6px; }
+.video-actions { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+.video-actions button { padding:4px 8px; border:none; background:#ff0000; color:#fff; border-radius:4px; cursor:pointer; }
+.comments { margin-top:8px; max-height:150px; overflow-y:auto; }
+.comments p { margin:3px 0; font-size:14px; }
+.comment-form { display:flex; margin-top:5px; }
+.comment-form input { flex:1; padding:5px; border-radius:4px; border:1px solid #ccc; }
+.comment-form button { margin-left:5px; background:#ff0000; color:#fff; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Video Platform</h1>
+  <button id="logoutBtn">Logout</button>
+</header>
+<div class="container">
+  <div class="upload-form">
+    <h2>Upload Video (Login Required)</h2>
+    <form id="uploadForm">
+      <input type="file" name="video" accept="video/*" required>
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+  <div class="video-grid" id="videoList"></div>
+</div>
+
+<script>
+const uploadForm = document.getElementById('uploadForm');
+const videoList = document.getElementById('videoList');
+const logoutBtn = document.getElementById('logoutBtn');
+
+logoutBtn.addEventListener('click',()=>{ window.location.href='/'; });
+
+async function loadVideos() {
+  const res = await fetch('/api/videos');
+  const videos = await res.json();
+  videoList.innerHTML = '';
+  videos.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+
+    const vid = document.createElement('video');
+    vid.src = v.url;
+    vid.controls = true;
+
+    const actions = document.createElement('div');
+    actions.className = 'video-actions';
+    const likeBtn = document.createElement('button');
+    likeBtn.innerText = `👍 Like (${v.likes||0})`;
+    likeBtn.onclick = async ()=>{
+      await fetch('/api/videos',{ method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ videoId:v._id, action:'like' })});
+      loadVideos();
+    };
+    actions.appendChild(likeBtn);
+
+    const commentsDiv = document.createElement('div');
+    commentsDiv.className = 'comments';
+    (v.comments||[]).forEach(c=>{
+      const p = document.createElement('p');
+      p.innerText = `${c.username}: ${c.text}`;
+      commentsDiv.appendChild(p);
+    });
+
+    const commentForm = document.createElement('form');
+    commentForm.className='comment-form';
+    const commentInput = document.createElement('input');
+    commentInput.placeholder='Add comment';
+    const commentBtn = document.createElement('button');
+    commentBtn.innerText='Send';
+    commentForm.append(commentInput, commentBtn);
+    commentForm.onsubmit = async e=>{
+      e.preventDefault();
+      const username = prompt('Enter your name for comment') || 'Anonymous';
+      await fetch('/api/videos',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ videoId:v._id, action:'comment', comment: commentInput.value, username })});
+      loadVideos();
+    };
+
+    card.append(vid, actions, commentsDiv, commentForm);
+    videoList.appendChild(card);
+  });
+}
+
+loadVideos();
+
+uploadForm.addEventListener('submit', async e=>{
+  e.preventDefault();
+  const file = uploadForm.video.files[0];
+  const formData = new FormData();
+  formData.append('video', file);
+  const res = await fetch('content/upload.html',{ method:'POST', body: formData });
+  const data = await res.json();
+  if(data.success){ alert('Upload success'); loadVideos(); } 
+  else alert('Upload failed');
+});
+</script>
+</body>
+</html>
