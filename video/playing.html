@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTKR VIDEO</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>GTKR VIDEO</h1>
+        <p>Tambahkan video ke queue dan otomatis kirim embed ke Discord</p>
+    </header>
+
+    <section class="add-video">
+        <form id="playForm">
+            <input type="text" id="urlInput" placeholder="Masukkan link YouTube" required>
+            <button type="submit">Add to Queue</button>
+        </form>
+    </section>
+
+    <section class="video-player">
+        <h2 id="videoTitle">Tidak ada video</h2>
+        <div id="player"></div>
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+    </section>
+
+    <section class="controls">
+        <button id="prevBtn">⏮️ Previous</button>
+        <button id="nextBtn">⏭️ Next</button>
+    </section>
+
+    <section class="playlist-section">
+        <h3>Playlist</h3>
+        <div id="playlistContainer" class="playlist"></div>
+    </section>
+
+    <footer>
+        <p>Discord Webhook YouTube Player 24/7</p>
+    </footer>
+</div>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="video/script.js"></script>
+</body>
+  </html>
